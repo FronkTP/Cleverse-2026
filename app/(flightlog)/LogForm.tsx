@@ -1,5 +1,6 @@
 import { useState, useCallback, type ChangeEvent } from "react";
 import type { LogFormData, LogFormProps } from "./types";
+import styles from "./LogForm.module.css";
 
 const emptyForm: LogFormData = {
   passengerName: "",
@@ -39,11 +40,9 @@ function LogForm(props: LogFormProps) {
   );
 
   return (
-    <div style={{ display: "flex", columnGap: 8 }}>
-      <div
-        style={{ flex: 1, display: "flex", flexDirection: "column", rowGap: 4 }}
-      >
-        <label htmlFor="passengerName" style={{ fontWeight: "bold" }}>
+    <div className={styles.form}>
+      <div className={styles.field}>
+        <label htmlFor="passengerName" className={styles.label}>
           Passenger Name:
         </label>
         <input
@@ -54,28 +53,28 @@ function LogForm(props: LogFormProps) {
           required
           value={formData.passengerName}
           onChange={handleChange}
+          className={styles.input}
         />
       </div>
-      <div
-        style={{ flex: 1, display: "flex", flexDirection: "column", rowGap: 4 }}
-      >
-        <label htmlFor="airport" style={{ fontWeight: "bold" }}>
+      <div className={styles.field}>
+        <label htmlFor="airport" className={styles.label}>
           Airport:
         </label>
         <input
           type="text"
           id="airport"
           name="airport"
-          placeholder="bangkok"
+          placeholder={
+            type === "departure" ? "bangkok" : "tokyo"
+          }
           required
           value={formData.airport}
           onChange={handleChange}
+          className={styles.input}
         />
       </div>
-      <div
-        style={{ flex: 1, display: "flex", flexDirection: "column", rowGap: 4 }}
-      >
-        <label htmlFor="timestamp" style={{ fontWeight: "bold" }}>
+      <div className={styles.field}>
+        <label htmlFor="timestamp" className={styles.label}>
           Date/Time:
         </label>
         <input
@@ -84,10 +83,17 @@ function LogForm(props: LogFormProps) {
           name="timestamp"
           value={formData.timestamp}
           onChange={handleChange}
+          className={styles.input}
         />
       </div>
-      <div style={{ flex: 1, display: "flex", alignItems: "flex-end" }}>
-        <button style={{ cursor: "pointer" }} onClick={handleSubmit}>Submit</button>
+      <div className={styles.submitRow}>
+        <button
+          className={`${styles.submitButton} ${type === "arrival" ? styles.arrival : ""
+            }`}
+          onClick={handleSubmit}
+        >
+          {type === "arrival" ? "Submit Arrival" : "Submit Departure"}
+        </button>
       </div>
     </div>
   );
