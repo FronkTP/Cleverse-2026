@@ -1,4 +1,6 @@
-function LogItem(props) {
+import type { LogItemProps } from "./types";
+
+function LogItem(props: LogItemProps) {
   const { item } = props;
   return (
     <div style={{ display: "flex" }}>
