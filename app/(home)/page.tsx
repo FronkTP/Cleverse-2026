@@ -6,20 +6,26 @@ import styles from "./Home.module.css";
 import { FlightLogService } from "../(flightlog)/fightlog.service";
 import LogCard from "../(flightlog)/LogCard";
 import LogForm from "../(flightlog)/LogForm";
+import type { LogEntry, LogEntryInput } from "../(flightlog)/types";
 // import BoardingPassCard from "../(boardingpass)/BoardingPassCard";
 
 const flightLogService = new FlightLogService();
 
 export default function Home() {
-  const [logs, setLogs] = useState([]);
+  const [logs, setLogs] = useState<LogEntry[]>([]);
 
-  const handleAddLog = useCallback(
-    (log) => {
-      logs.push(log);
-      setLogs(logs);
-    },
-    [logs]
-  );
+  const handleAddLog = useCallback((log: LogEntryInput) => {
+    const timestamp = Number(log.timestamp);
+    const nextLog: LogEntry = {
+      id: `log-${Date.now()}`,
+      passengerName: log.passengerName,
+      airport: log.airport,
+      timestamp: Number.isNaN(timestamp) ? Date.now() : timestamp,
+      type: log.type,
+    };
+
+    setLogs((prev) => [...prev, nextLog]);
+  }, []);
 
   useEffect(() => {
     const fetch = async () => {
@@ -42,13 +48,11 @@ export default function Home() {
         </p>
         <div className={styles.card} style={{ margin: 16, width: "100%" }}>
           <h2>Flight Logs</h2>
-          <LogCard style={{ width: "100%" }} data={logs}></LogCard>
+          <LogCard data={logs}></LogCard>
         </div>
         <div className={styles.card} style={{ margin: 16, width: "100%" }}>
           <h2>Departure Logging</h2>
           <LogForm
-            style={{ width: "100%" }}
-            data={logs}
             type={"departure"}
             onSubmit={handleAddLog}
           ></LogForm>
@@ -56,8 +60,6 @@ export default function Home() {
         <div className={styles.card} style={{ margin: 16, width: "100%" }}>
           <h2>Arrival Logging</h2>
           <LogForm
-            style={{ width: "100%" }}
-            data={logs}
             type={"arrival"}
             onSubmit={handleAddLog}
           ></LogForm>
