@@ -73,7 +73,7 @@ function LogForm(props: LogFormProps) {
         />
       </div>
       <div style={{ flex: 1, display: "flex", alignItems: "flex-end" }}>
-        <button onClick={handleSubmit}>Submit</button>
+        <button style={{ cursor: "pointer" }} onClick={handleSubmit}>Submit</button>
       </div>
     </div>
   );
