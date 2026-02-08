@@ -143,19 +143,15 @@ export default function Home() {
           <h2>Flight Logs</h2>
           <LogCard data={logs}></LogCard>
         </div>
-        <div className={styles.card} style={{ margin: 16, width: "100%" }}>
-          <h2>Departure Logging</h2>
-          <LogForm
-            type={"departure"}
-            onSubmit={handleAddLog}
-          ></LogForm>
-        </div>
-        <div className={styles.card} style={{ margin: 16, width: "100%" }}>
-          <h2>Arrival Logging</h2>
-          <LogForm
-            type={"arrival"}
-            onSubmit={handleAddLog}
-          ></LogForm>
+        <div className={styles.logFormGrid}>
+          <div className={`${styles.card} ${styles.logFormCard}`}>
+            <h2>Departure Logging</h2>
+            <LogForm type={"departure"} onSubmit={handleAddLog}></LogForm>
+          </div>
+          <div className={`${styles.card} ${styles.logFormCard}`}>
+            <h2>Arrival Logging</h2>
+            <LogForm type={"arrival"} onSubmit={handleAddLog}></LogForm>
+          </div>
         </div>
         {/* Render boarding pass here */}
         {/* {[].map((_, i) => ( */}
