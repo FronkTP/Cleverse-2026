@@ -16,10 +16,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ### Challenges
 
-- ปรับ style ปุ่มพิมพ์ค่าเฉลี่ยให้เข้ากับธีม
 - ทำให้กล่อง Flight Logs scrollable ด้วยการกำหนด fixed height เพื่อไม่ให้เนื้อหาเยอะเกินหน้าเวป
 - บังคับกรอกช่อง passenger name และ airport ก่อนกดปุ่ม submit
 - เพิ่ม placeholder ให้กับช่อง passenger name และ airport
+- ปรับ layout และ style ของ departure และ arrival logging ให้ดู modern ขึ้น
+- ปรับ style ปุ่มให้เข้ากับธีม
 
 ## Getting Started
 
