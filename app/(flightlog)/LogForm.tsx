@@ -62,10 +62,10 @@ function LogForm(props: LogFormProps) {
         style={{ flex: 1, display: "flex", flexDirection: "column", rowGap: 4 }}
       >
         <label htmlFor="timestamp" style={{ fontWeight: "bold" }}>
-          Timestamp:
+          Date/Time:
         </label>
         <input
-          type="text"
+          type="datetime-local"
           id="timestamp"
           name="timestamp"
           value={formData.timestamp}
