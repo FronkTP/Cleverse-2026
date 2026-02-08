@@ -13,6 +13,11 @@ function LogForm(props: LogFormProps) {
   const [formData, setFormData] = useState<LogFormData>(emptyForm);
 
   const handleSubmit = useCallback(() => {
+    if (!formData.passengerName || formData.passengerName.trim() === "") {
+      alert("Passenger name is required");
+      return;
+    }
+
     if (!formData.airport || formData.airport.trim() === "") {
       alert("Airport is required");
       return;
@@ -46,6 +51,7 @@ function LogForm(props: LogFormProps) {
           id="passengerName"
           name="passengerName"
           placeholder="cherprang"
+          required
           value={formData.passengerName}
           onChange={handleChange}
         />
