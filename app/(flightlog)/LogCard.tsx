@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import LogItem from "./LogItem";
+import type { LogCardProps, LogEntry } from "./types";
 
-function LogCard(props) {
+function LogCard(props: LogCardProps) {
   const { data } = props;
-  const [logs, setLogs] = useState(data);
+  const [logs, setLogs] = useState<LogEntry[]>(data);
 
   useEffect(() => {
     setLogs(data);
