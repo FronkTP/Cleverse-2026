@@ -32,7 +32,7 @@ function LogCard(props: LogCardProps) {
         <span style={{ flex: 1 }}>Type</span>
       </div>
       {logs.map((item) => (
-        <LogItem key={`${item.passengerName}`} item={item}></LogItem>
+        <LogItem key={`${item.id}`} item={item}></LogItem>
       ))}
     </div>
   );
