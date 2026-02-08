@@ -126,7 +126,10 @@ export default function Home() {
             Print route average time (to console)
           </button>
         </div>
-        <div className={styles.card} style={{ margin: 16, width: "100%" }}>
+        <div
+          className={`${styles.card} ${styles.logCard}`}
+          style={{ margin: 16, width: "100%" }}
+        >
           <h2>Flight Logs</h2>
           <LogCard data={logs}></LogCard>
         </div>

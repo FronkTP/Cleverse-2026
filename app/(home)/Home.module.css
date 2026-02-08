@@ -114,6 +114,11 @@
   width: 45%;
 }
 
+.logCard {
+  max-height: 16rem;
+  overflow-y: auto;
+}
+
 /*
 .card:hover,
 .card:focus,
