@@ -53,19 +53,29 @@ const buildRouteAverages = (
 
 const formatDuration = (ms: number): string => {
   const totalSeconds = Math.max(0, Math.floor(ms / 1000));
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
+
   const seconds = totalSeconds % 60;
+  const totalMinutes = Math.floor(totalSeconds / 60);
+  const minutes = totalMinutes % 60;
+  const totalHours = Math.floor(totalMinutes / 60);
+  const hours = totalHours % 24;
+  let totalDays = Math.floor(totalHours / 24);
 
-  if (hours > 0) {
-    return `${hours} hour ${minutes} min`;
-  }
+  const years = Math.floor(totalDays / 365);
+  totalDays = totalDays % 365;
+  const months = Math.floor(totalDays / 30);
+  const days = totalDays % 30;
 
-  if (minutes > 0) {
-    return `${minutes} min ${seconds} sec`;
-  }
+  const parts: string[] = [];
+  if (years) parts.push(`${years}y`);
+  if (months) parts.push(`${months}mo`);
+  if (days) parts.push(`${days}d`);
+  if (hours) parts.push(`${hours}h`);
+  if (minutes) parts.push(`${minutes}m`);
+  if (seconds) parts.push(`${seconds}s`);
 
-  return `${seconds} sec`;
+  if (parts.length === 0) return "0s";
+  return parts.join(" ");
 };
 
 export default function Home() {
