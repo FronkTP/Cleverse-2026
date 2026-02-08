@@ -28,7 +28,7 @@ function LogCard(props: LogCardProps) {
       >
         <span style={{ flex: 1 }}>Passenger Name</span>
         <span style={{ flex: 1 }}>Airport</span>
-        <span style={{ flex: 1 }}>Timestamp</span>
+        <span style={{ flex: 1 }}>Date/Time</span>
         <span style={{ flex: 1 }}>Type</span>
       </div>
       {logs.map((item) => (
