@@ -45,6 +45,7 @@ function LogForm(props: LogFormProps) {
           type="text"
           id="passengerName"
           name="passengerName"
+          placeholder="cherprang"
           value={formData.passengerName}
           onChange={handleChange}
         />
@@ -59,6 +60,7 @@ function LogForm(props: LogFormProps) {
           type="text"
           id="airport"
           name="airport"
+          placeholder="bangkok"
           required
           value={formData.airport}
           onChange={handleChange}
