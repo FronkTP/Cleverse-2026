@@ -1,27 +1,32 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, type ChangeEvent } from "react";
+import type { LogFormData, LogFormProps } from "./types";
 
-const emptyForm = {
+const emptyForm: LogFormData = {
   passengerName: "",
   airport: "",
   timestamp: "",
 };
 
-function LogForm(props) {
+function LogForm(props: LogFormProps) {
   const { type, onSubmit } = props;
 
-  const [formData, setFormData] = useState(emptyForm);
+  const [formData, setFormData] = useState<LogFormData>(emptyForm);
 
   const handleSubmit = useCallback(() => {
     onSubmit({ ...formData, type });
     setFormData(emptyForm);
   }, [formData, type, onSubmit]);
 
-  const handleChange = useCallback(({ target }) => {
-    setFormData((prev) => ({
-      ...prev,
-      [target.id]: target.value,
-    }));
-  }, []);
+  const handleChange = useCallback(
+    ({ target }: ChangeEvent<HTMLInputElement>) => {
+      const field = target.name as keyof LogFormData;
+      setFormData((prev) => ({
+        ...prev,
+        [field]: target.value,
+      }));
+    },
+    []
+  );
 
   return (
     <div style={{ display: "flex", columnGap: 8 }}>
