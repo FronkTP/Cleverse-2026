@@ -15,12 +15,14 @@ export default function Home() {
   const [logs, setLogs] = useState<LogEntry[]>([]);
 
   const handleAddLog = useCallback((log: LogEntryInput) => {
-    const timestamp = Number(log.timestamp);
+    const parsedTimestamp = Date.parse(log.timestamp);
     const nextLog: LogEntry = {
       id: `log-${Date.now()}`,
       passengerName: log.passengerName,
       airport: log.airport,
-      timestamp: Number.isNaN(timestamp) ? Date.now() : timestamp,
+      timestamp: Number.isNaN(parsedTimestamp)
+        ? Date.now()
+        : parsedTimestamp,
       type: log.type,
     };
 
