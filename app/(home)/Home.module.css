@@ -45,7 +45,7 @@
 }
 
 .title {
-  margin: 0;
+  margin: 1.5rem 0;
   line-height: 1.15;
   font-size: 4rem;
 }
@@ -67,6 +67,30 @@
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.avgButton {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background: #0070f3;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.avgButton:hover {
+  background: #0059c1;
+  border-color: #0059c1;
+  transform: translateY(-1px);
+}
+
+.avgButton:focus-visible {
+  outline: 3px solid #cce0ff;
+  outline-offset: 2px;
 }
 
 .grid {

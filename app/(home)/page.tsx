@@ -117,15 +117,17 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next Airline!</a>
         </h1>
-        <p className={styles.description}>
+        {/* <p className={styles.description}>
           Get started by editing{" "}
           <code className={styles.code}>app/(home)/page.tsx</code>
-        </p>
+        </p> */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <button className={styles.avgButton} onClick={handlePrintAverages}>
+            Print route average time (to console)
+          </button>
+        </div>
         <div className={styles.card} style={{ margin: 16, width: "100%" }}>
           <h2>Flight Logs</h2>
-          <button onClick={handlePrintAverages}>
-            Print avg time to console
-          </button>
           <LogCard data={logs}></LogCard>
         </div>
         <div className={styles.card} style={{ margin: 16, width: "100%" }}>
